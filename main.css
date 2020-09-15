@@ -29,7 +29,7 @@ form {
     margin: 20px auto;
 }
 
-button {
+form button {
     width: 200px;
     height: 35px;
     margin: 0 10px;
@@ -45,8 +45,6 @@ h1 {
 ul {
     grid-area: ul;
     font-size: 30px;
-    height: 50px;
-    line-height: 50px;
 }
 
 li {
@@ -55,11 +53,13 @@ li {
     align-items: center;
     position: relative;
     text-decoration: dotted;
+    margin-bottom: 10px;
 }
 
 li button {
-    position: absolute;
-    right: 200px;
+    margin-right: 20px;
+    height: 30px;
+    font-size: 20px;
 }
 
 .invisible {

@@ -35,7 +35,7 @@ const addTask = (e) => {
     }
     const task = document.createElement('li');
     task.className = 'task';
-    task.innerHTML = titleTask + ' <button> Zrobione </button>';
+    task.innerHTML = ' <button> Zrobione </button>' + titleTask;
     toDoList.push(task);
     ul.appendChild(task);
     addInput.value = "";
