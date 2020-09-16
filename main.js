@@ -35,16 +35,16 @@ const addTask = (e) => {
     }
     const task = document.createElement('li');
     task.className = 'task';
-    task.innerHTML = ' <button> Zrobione </button>' + titleTask;
+    task.innerHTML = '<input type="checkbox">' + titleTask;
     toDoList.push(task);
     ul.appendChild(task);
     addInput.value = "";
     taskNumber.textContent = liElements.length;
-    task.querySelector('button').addEventListener('click', removeTask);
+    task.querySelector('input').addEventListener('click', removeTask);
 }
 
 //nasłuchiwanie na wykonanie pierwszego zadania
-document.querySelectorAll('li button').forEach(item => item.addEventListener('click', removeTask));
+document.querySelectorAll('li input').forEach(item => item.addEventListener('click', removeTask));
 
 //nasłuchiwanie na dodanie zadania
 form.addEventListener('submit', addTask);

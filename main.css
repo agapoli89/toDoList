@@ -7,6 +7,9 @@ body {
         "form form form . ."
         ". h1 h1 h1 ."
         ". ul ul ul .";
+    background-color: #595857;
+    color: #F2F2F2;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 label {
@@ -17,7 +20,7 @@ label {
     margin: 20px auto;
 }
 
-input {
+.text-input {
     width: 200px;
     height: 30px;
     margin: 0 10px;
@@ -34,6 +37,7 @@ form button {
     height: 35px;
     margin: 0 10px;
     font-size: 20px;
+    font-family: 'Kumbh Sans', sans-serif;
 }
 
 h1 {
@@ -51,15 +55,13 @@ li {
     width: 100%;
     display: flex;
     align-items: center;
-    position: relative;
-    text-decoration: dotted;
     margin-bottom: 10px;
 }
 
-li button {
+li input {
     margin-right: 20px;
     height: 30px;
-    font-size: 20px;
+    width: 30px;
 }
 
 .invisible {
