@@ -36,6 +36,8 @@ const addTask = (e) => {
     const task = document.createElement('li');
     task.className = 'task';
     task.innerHTML = '<input type="checkbox">' + titleTask;
+
+    document.cookie = encodeURIComponent("task") + "=" + encodeURIComponent(`${titleTask}`);
     toDoList.push(task);
     ul.appendChild(task);
     addInput.value = "";
