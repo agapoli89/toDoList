@@ -21,8 +21,12 @@ const searchTask = (e) => {
 
 // usuwanie wykonanych zadań
 const removeTask = (e) => {
+
     e.target.parentNode.remove();
+    const cookieTaskNumber = e.target.parentNode.dataset.number;
     taskNumber.textContent = liElements.length;
+
+    document.cookie = "task" + cookieTaskNumber + "=; max-age=-1;";
 }
 
 // dodawanie zadania
@@ -35,13 +39,23 @@ const addTask = (e) => {
     }
     const task = document.createElement('li');
     task.className = 'task';
-    task.innerHTML = '<input type="checkbox">' + titleTask;
 
-    document.cookie = encodeURIComponent("task") + "=" + encodeURIComponent(`${titleTask}`);
+    // cookie
+    let dataNumber = 0;
+    if (toDoList.length > 0) {
+        dataNumber = toDoList[toDoList.length - 1].dataset.number;
+    }
+    dataNumber++;
+    task.dataset.number = dataNumber;
+    task.innerHTML = `<input type="checkbox">` + titleTask;
     toDoList.push(task);
     ul.appendChild(task);
-    addInput.value = "";
     taskNumber.textContent = liElements.length;
+
+    const cookieName = "task" + dataNumber;
+    setCookie(cookieName, addInput.value);
+
+    addInput.value = "";
     task.querySelector('input').addEventListener('click', removeTask);
 }
 
@@ -54,3 +68,44 @@ form.addEventListener('submit', addTask);
 searchInput.addEventListener('input', searchTask);
 
 taskNumber.textContent = liElements.length;
+
+const setCookie = (name, val) => {
+    if (navigator.cookieEnabled) { //czy ciasteczka są włączone
+        const cookieName = encodeURIComponent(name);
+        const cookieVal = encodeURIComponent(val);
+        let cookieText = cookieName + "=" + cookieVal + "; max-age=604800";
+
+        document.cookie = cookieText;
+    }
+}
+
+const readCookie = () => {
+    console.log('odczytuje ciasteczka');
+    if (document.cookie === "") return;
+
+    const cookies = document.cookie.split(/; */);
+    console.log(cookies);
+
+    for (let i = 0; i < cookies.length; i++) {
+        const cookiePart = cookies[i].split("=");
+        const cookieName = cookiePart[0];
+        const cookieVal = cookiePart[1];
+
+        if (cookieName.includes('task')) {
+            const task = document.createElement('li');
+            task.className = 'task';
+            const dataNumber = cookieName.substr("task".length);
+            task.dataset.number = dataNumber;
+            task.innerHTML = `<input type="checkbox">` + cookieVal;
+            toDoList.push(task);
+            ul.appendChild(task);
+            taskNumber.textContent = liElements.length;
+
+            task.querySelector('input').addEventListener('click', removeTask);
+
+        };
+    }
+
+};
+
+readCookie();
