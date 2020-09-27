@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: #184059;
+    color: #D7D7D9;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    margin: 5px auto;
+    width: 60vw;
+}
+
+@media (max-width: 700px) {
+    .container {
+        width: 90vw;
+    }
+}
+
+.panel {
+    position: relative;
+    margin: 10% auto 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #184059;
+}
+
+i {
+    cursor: pointer;
+}
+
+.add-panel {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #184059;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-panel {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #184059;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 35vw;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    font-size: 20px;
+    line-height: 1.6;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.done {
+    margin-top: 2%;
+}
+
+li {
+    background: url('img/unchecked.png') no-repeat 7px 4px;
+    padding: 0px 0px 1px 35px;
+    list-style-type: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+img {
+    margin-left: 15px;
+    cursor: pointer;
+    align-items: self-end;
+    opacity: .6;
+}
+
+img:hover {
+    opacity: 1;
+}
+
+.invisible {
+    display: none;
+}
+
+.visibility {
+    z-index: -1;
+}
