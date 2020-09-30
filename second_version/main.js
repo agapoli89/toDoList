@@ -1,3 +1,12 @@
+const storageTaskList = document.querySelector('.ulToStorage');
+
+const getFromStorage = () => {
+    const retrievedDiv = localStorage.getItem("storageTaskList");
+    storageTaskList.innerHTML = retrievedDiv;
+
+    currentNumbers();
+}
+
 const btnAddPanel = document.querySelector('.icon-plus');
 const btnSearchPanel = document.querySelector('.icon-search');
 let taskList = [...document.querySelectorAll('li')];
@@ -34,6 +43,7 @@ const addTask = () => {
     img.addEventListener('click', removeTask);
 
     currentNumbers();
+    storageFunction();
 }
 
 const doneTask = (e) => {
@@ -46,6 +56,7 @@ const doneTask = (e) => {
     e.target.addEventListener('click', undoneTask);
 
     currentNumbers();
+    storageFunction();
 }
 
 const removeTask = (e) => {
@@ -53,6 +64,7 @@ const removeTask = (e) => {
     e.target.remove();
 
     currentNumbers();
+    storageFunction();
 }
 
 const undoneTask = (e) => {
@@ -65,6 +77,7 @@ const undoneTask = (e) => {
     e.target.addEventListener('click', doneTask);
 
     currentNumbers();
+    storageFunction();
 }
 
 const searchPanel = () => {
@@ -75,6 +88,7 @@ const searchPanel = () => {
     });
 
     document.querySelector('.search-panel input').addEventListener('input', searchTask);
+
 }
 
 const searchTask = (e) => {
@@ -97,20 +111,35 @@ const searchTask = (e) => {
     document.querySelector('.all-tasks').textContent = taskList.length;
 
     const taskListToDo = taskList.filter(li => {
-        return li.parentNode.classList === '.undone'
+        return li.parentNode.classList.contains('undone')
     });
-    console.log(taskList[0].parentNode);
-    console.log(taskListToDo);
+    document.querySelector('.to-do').textContent = taskListToDo.length;
+
+    currentNumbers();
 }
 
 const currentNumbers = () => {
+    const invisible = document.querySelectorAll('li.invisible').length;
+    const invisibleUndone = document.querySelectorAll('.undone li.invisible').length;
+
     taskList = [...document.querySelectorAll('li')];
-    document.querySelector('.all-tasks').textContent = taskList.length;
+    document.querySelector('.all-tasks').textContent = taskList.length - invisible;
 
     liToDo = [...document.querySelectorAll('.undone li')];
-    document.querySelector('.to-do').textContent = liToDo.length;
+    document.querySelector('.to-do').textContent = liToDo.length - invisibleUndone;
+
+
 }
 
+
+//storage
+const storageFunction = () => {
+    localStorage.setItem('storageTaskList', storageTaskList.innerHTML);
+    /* const afterStorage = document.querySelector('.ulAfterStorage');
+    afterStorage.innerHTML = retrievedDiv; */
+}
+
+getFromStorage();
 btnAddPanel.addEventListener('click', addPanel);
 document.querySelectorAll('li').forEach(item => item.addEventListener('click', doneTask));
 document.querySelectorAll('img').forEach(item => item.addEventListener('click', removeTask));
