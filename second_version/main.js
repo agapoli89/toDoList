@@ -2,16 +2,19 @@ const storageTaskList = document.querySelector('.ulToStorage');
 
 const getFromStorage = () => {
     const retrievedDiv = localStorage.getItem("storageTaskList");
-    storageTaskList.innerHTML = retrievedDiv;
+
+    if (retrievedDiv !== null)
+        storageTaskList.innerHTML = retrievedDiv;
 
     currentNumbers();
 }
 
+
 const btnAddPanel = document.querySelector('.icon-plus');
 const btnSearchPanel = document.querySelector('.icon-search');
 let taskList = [...document.querySelectorAll('li')];
-const ul = document.querySelector('.undone');
-const ulDone = document.querySelector('.done');
+//const ul = document.querySelector('.undone');
+//const ulDone = document.querySelector('.done');
 let liToDo = [...document.querySelectorAll('.undone li')];
 
 const addPanel = () => {
@@ -34,7 +37,7 @@ const addTask = () => {
     const addLi = document.createElement('li');
     addLi.textContent = newTask;
     taskList.push(addLi);
-    ul.appendChild(addLi);
+    document.querySelector('.undone').appendChild(addLi);
     const img = document.createElement('img');
     img.src = 'img/bin.png';
     addLi.after(img);
@@ -50,6 +53,7 @@ const doneTask = (e) => {
     const doneTask = e.target;
     doneTask.style.background = `url('img/checked.png') no-repeat 7px 4px`;
     const img = doneTask.nextElementSibling;
+    const ulDone = document.querySelector('.done');
     ulDone.appendChild(doneTask);
     ulDone.appendChild(img);
     e.target.removeEventListener('click', doneTask);
@@ -71,6 +75,7 @@ const undoneTask = (e) => {
     const doneTask = e.target;
     doneTask.style.background = `url('img/unchecked.png') no-repeat 7px 4px`;
     const img = doneTask.nextElementSibling;
+    const ul = document.querySelector('.undone');
     ul.appendChild(doneTask);
     ul.appendChild(img);
     e.target.removeEventListener('click', undoneTask);
@@ -127,16 +132,13 @@ const currentNumbers = () => {
 
     liToDo = [...document.querySelectorAll('.undone li')];
     document.querySelector('.to-do').textContent = liToDo.length - invisibleUndone;
-
-
 }
-
 
 //storage
 const storageFunction = () => {
     localStorage.setItem('storageTaskList', storageTaskList.innerHTML);
-    /* const afterStorage = document.querySelector('.ulAfterStorage');
-    afterStorage.innerHTML = retrievedDiv; */
+
+    if (taskList.length <= 0) localStorage.removeItem("storageTaskList");
 }
 
 getFromStorage();
