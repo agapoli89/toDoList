@@ -21,6 +21,11 @@ const addPanel = () => {
     document.querySelector('.add-panel').classList.remove('visibility');
 
     document.querySelector('.add-panel .icon-plus').addEventListener('click', addTask);
+    document.querySelector('.add-panel input').addEventListener('keyup', e => {
+        if (e.key === 'Enter') {
+            addTask();
+        }
+    })
 
     document.querySelector('.add-panel .icon-undo').addEventListener('click', () => {
         document.querySelector('.add-panel').classList.add('visibility');
