@@ -59,20 +59,22 @@
 
 .icon-plus:before {
   content: '\e800';
-  font-size: 50px;
+  font-size: 9vmin;
+  /*wcześniej 50px*/
   padding: 5px;
 }
 
 /* '' */
 .icon-undo:before {
   content: '\e801';
-  font-size: 45px;
+  font-size: 8vmin;
+  /*wcześniej 45px*/
 }
 
 /* '' */
 .icon-search:before {
   content: '\e802';
-  font-size: 50px;
+  font-size: 9vmin;
 }
 
 /* '' */

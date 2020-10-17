@@ -17,6 +17,11 @@ body {
     .container {
         width: 90vw;
     }
+
+    input {
+        width: 50%;
+        height: 40px;
+    }
 }
 
 .panel {
@@ -60,11 +65,11 @@ i {
 
 input {
     width: 35vw;
-    height: 40px;
+    height: 4vw;
     border-radius: 3px;
     border: none;
-    margin-right: 15px;
-    font-size: 30px;
+    margin-right: 20px;
+    font-size: 3vw;
 }
 
 h1 {
