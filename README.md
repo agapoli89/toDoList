@@ -1,6 +1,6 @@
 # toDoList
 
-Simple "to-do" list made in html, css and pure javascript create to practise.
+Simple "to-do" list made in html, css and pure javascript. Create to practise these languages.
 
 ### Features:
 - to add tasks to do;
